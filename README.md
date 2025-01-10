@@ -1,90 +1,63 @@
 # Bank Account Management System
 
-This is a simple program that simulates basic bank account functionalities such as deposit, withdrawal, and account balance display. It is implemented in Dart and demonstrates how to manage a bank account with validations for deposit and withdrawal operations.
+## :bank: Overview
+This **Dart** program simulates basic **bank account management** functionalities, including deposit, withdrawal, and account balance display operations. It demonstrates real-world banking tasks while ensuring basic validations for transactions, such as ensuring positive amounts and checking sufficient funds.
 
-## Features
+## :sparkles: Features
 
-- **Deposit**: Allows the user to deposit money into the account with validation for positive amounts.
-- **Withdrawal**: Allows the user to withdraw money from the account with validations for positive amounts and sufficient balance.
-- **Display Account Info**: Displays the current account balance and account ID.
+- **Deposit**: Deposit money into the account with validation for positive amounts.
+- **Withdrawal**: Withdraw money from the account with checks for sufficient balance and positive withdrawal amounts.
+- **Account Info**: Display the current balance and account ID.
 
-## Code Walkthrough
+## :scroll: Code Walkthrough
 
-### `main()` Function
+### :pencil2: Main Function
 
-The `main` function demonstrates how the `BankAccount` class works:
+The `main()` function simulates a series of banking operations:
 
-1. **Account Creation**: An account is created using the named constructor `BankAccount('Osama1007')`, initializing the account with a specific ID (`Osama1007`).
-2. **Display Initial Info**: The account details (Account ID and Balance) are displayed.
-3. **Deposit Operations**: A deposit of 500 is made, followed by an invalid deposit of -100.
-4. **Withdrawal Operations**: A valid withdrawal of 200 is made, followed by an insufficient balance withdrawal and an invalid withdrawal of -50.
-5. **Display Final Info**: Finally, the updated account details are shown.
+1. **Account Creation**:  
+   The account is created using the named constructor `BankAccount('Osama1007')`, initializing the account ID to `Osama1007` and the balance to `0.0`.
 
-### `BankAccount` Class
+2. **Deposit Scenarios**:  
+   - A valid deposit of **500** is made to the account.
+   - An **invalid deposit** with a negative value (**-100**) is attempted and rejected.
 
-This class encapsulates the details of a bank account. It contains the following methods:
+3. **Withdrawal Scenarios**:  
+   - A valid withdrawal of **200** is made, reducing the balance.
+   - An **insufficient balance** withdrawal of **400** is attempted and rejected.
+   - Another **invalid withdrawal** of **-50** is attempted and rejected.
 
-- **Constructor**: `BankAccount(this._accountID)` initializes the account with an account ID and sets the balance to 0 by default.
-  
-- **`deposit(double amount)`**: This method handles deposit operations. It ensures that the deposit amount is positive and updates the account balance.
+4. **Final Account Info**:  
+   After all the operations, the program displays the account details, including the final balance.
 
-- **`withdraw(double amount)`**: This method handles withdrawal operations. It ensures that the withdrawal amount is positive and that the account has sufficient balance.
+### :books: BankAccount Class
 
-- **`displayAccountInfo()`**: This method displays the account ID and the current balance.
+The `BankAccount` class models a bank account with the following features:
 
-## Code Example
+- **Constructor**:  
+   `BankAccount(this._accountID)` initializes the account with a specified ID and a starting balance of `0.0`.
 
-```dart
-void main() {
-  // Creating an account using the named constructor
-  var a1 = BankAccount('Osama1007');
+- **Deposit Method**:  
+   The `deposit(double amount)` method ensures that only **positive amounts** can be deposited. It adds the deposit amount to the balance and provides feedback.
 
-  // Display initial account info
-  a1.displayAccountInfo();
+- **Withdraw Method**:  
+   The `withdraw(double amount)` method ensures the amount is positive and checks if there are sufficient funds in the account before processing the withdrawal.
 
-  // Deposit scenarios
-  print('\n-- Deposit Scenarios --');
-  a1.deposit(500); // Valid deposit
-  a1.deposit(-100); // Invalid deposit
+- **Display Account Info**:  
+   The `displayAccountInfo()` method displays the current **account ID** and **balance**.
 
-  // Withdrawal scenarios
-  print('\n-- Withdrawal Scenarios --');
-  a1.withdraw(200); // Valid withdrawal
-  a1.withdraw(400); // Insufficient balance
-  a1.withdraw(-50); // Invalid withdrawal
+## :rocket: How to Run
 
-  // Display final account info
-  print('\n-- Final Account Info --');
-  a1.displayAccountInfo();
-}
+To run this program on your local machine, follow these steps:
 
-class BankAccount {
-  String _accountID;
-  double _balance;
+1. **Install Dart**:  
+   If you don’t have Dart installed, download and install it from the [official Dart website](https://dart.dev/get-dart).
 
-  BankAccount(this._accountID) : _balance = 0;
+2. **Save the Code**:  
+   Copy the Dart code into a file with the `.dart` extension, for example, `bank_account.dart`.
 
-  void deposit(double amount) {
-    if (amount <= 0) {
-      print("Error: deposit amount should be positive.");
-    } else {
-      _balance += amount;
-      print("Successful: deposit done, now balance is $_balance.");
-    }
-  }
+3. **Run the Code**:  
+   Open your terminal and navigate to the directory where the Dart file is located. Then run the following command:
 
-  void withdraw(double amount) {
-    if (amount <= 0) {
-      print("Error: withdrawal amount should be positive.");
-    } else if ((_balance - amount) >= 0) {
-      this._balance -= amount;
-      print("Successful: withdrawal done, now balance is $_balance.");
-    } else {
-      print("Error: account balance is not sufficient");
-    }
-  }
-
-  void displayAccountInfo() {
-    print("Account ID is $_accountID and balance is $_balance.");
-  }
-}
+   ```bash
+   dart run bank_account.dart
